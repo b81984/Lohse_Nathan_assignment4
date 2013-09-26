@@ -30,7 +30,20 @@ var smallestValue = function()
 
 var stringToNumber = function()
 {
-	
+	var toChange = "";
+	var changed = 0;
+	console.log("This function changes a string containing a number into a number data type.");
+	toChange = prompt("Enter the string to convert into a number");
+	if(toChange.indexOf(".") === -1)
+	{
+		changed = parseInt(toChange);
+	}
+
+	else
+	{
+		changed = parseFloat(toChange);
+	}
+	console.log(changed + "has been converted to a number data item!");
 }
 
 while(goOn === true)
