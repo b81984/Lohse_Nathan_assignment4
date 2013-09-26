@@ -6,6 +6,27 @@ var selectNum = 0;
 
 var fuzzyMatch = function() //Is the Number above or below a number within a certain percent?
 {
+	var controlNum = 0;
+	var testNum = 0;
+	var percent = 0;
+	var upperLimit = 0;
+	var lowerLimit = 0;
+
+	controlNum = parseInt(prompt("Enter a number to use as the base of the test"));
+	testNum = parseInt(prompt("Enter a number to try and match to the base number"));
+	percent = parseInt(prompt("Enter a percent to use in the test, as a whole number between 1 and 100)"));
+	percent = .01 * percent;
+	upperLimit = ((1 + percent) * controlNum);
+	lowerLimit = ((1 - percent) * controlNum);
+	percent = percent * 100;
+	if(testNum <= upperLimit && testNum >= lowerLimit)
+	{
+		console.log(testNum + " is within " + percent + " percent of " + controlNum + ".  Fuzzy Match successful!");
+	}
+	else
+	{
+		console.log(testNum + " is NOT within " + percent + " percent of " + controlNum + ".  Fuzzy Match failed!");
+	}
 
 }
 
