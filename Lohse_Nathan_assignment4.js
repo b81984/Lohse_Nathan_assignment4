@@ -15,7 +15,16 @@ var timeDifference = function()
 
 var isPhoneNumber = function()
 {
-	
+	var testNumber = "";
+	testNumber = prompt("Enter a string to test for phone number format (must include XXX-XXX-XXXX format to be considered a phone number)");
+	if(testNumber.indexOf("-") === 3 && testNumber.lastIndexOf("-") === 7)
+	{
+		console.log("This number is a phone number!");
+	}
+	else
+	{
+		console.log("This is not a phone number!");
+	}	
 }
 
 var isURL = function()
