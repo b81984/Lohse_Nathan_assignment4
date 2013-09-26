@@ -30,58 +30,23 @@ var fuzzyMatch = function() //Is the Number above or below a number within a cer
 
 }
 
-var timeDifference = function()
+var isEmail = function() //This particular function assumes that email addresses using a format such as first.last@domain.com are still valid.
 {
-	var date1, date2, month1, month2, day1, day2, year1, year2, gap, monthDiff, dayDiff, yearDiff,monthTrack;
-	gap = 0;
-	date1 = prompt("Enter the first date in MM/DD/YYYY format.");
-	date2 = prompt("Enter the second date in MM/DD/YYYY format.");
-	month1 = parseInt(date1.substring(0,2));
-	month2 = parseInt(date2.substring(0,2));
-	day1 = parseInt(date1.substring(3,5));
-	day2 = parseInt(date2.substring(3,5));
-	year1 = parseInt(date1.substring(6,10));
-	year2 = parseInt(date2.substring(6,10));
-	monthDiff = month2 - month1;
-	dayDiff = day2 - day1;
-	yearDiff = year2 - year1;
-	monthTrack = month1;
-	//console.log(date1 + " " + month1 + " " + day1 + " " + year1);
-	//console.log(date2 + " " + month2 + " " + day2 + " " + year2);
-
-	if (yearDiff < 0)
+	var inString = prompt("Enter the potential email address");
+	if(inString.indexOf("@") === -1 || inString.indexOf(".") === -1)
 	{
-		for(var i = 0; i > yearDiff; i--)
-		{
-			gap = gap + 365;
-		}
+		console.log("This cannot be an email address!");
 	}
 	else
 	{
-		for( var i = 0; i < yearDiff; i++)
+		if(inString.indexOf("@") > inString.lastIndexOf("."))
 		{
-			gap = gap + 365;
+			console.log("This is close, but the componants are out of order!");
 		}
-	}
-
-
-	if (monthDiff < 0)
-	{
-		monthDiff = 12 + monthDiff;
-		for(var i = 0; i > monthDiff; i--)
+		else
 		{
-
-
+			console.log("This is a valid email address!");
 		}
-
-	}
-	else
-	{
-		for( var i = 0; i < monthDiff; i++)
-		{
-
-		}
-
 	}
 
 
@@ -167,7 +132,7 @@ var stringToNumber = function()
 
 while(goOn === true)
 {
-	console.log("List of functions available:\n1. fuzzyMatch - Fuzzy-match a number: is the number above or below a number within a certain percent?\n2. timeDifference - Find the number of hours or days difference between two dates.\n3. isPhoneNumber - Does a string follow a 123-456-7890 pattern like a phone number?\n4. isURL - Is the string a URL? (Does it start with http: or https:?)\n5. smallestValue - Find the smallest value in an array that is greater than a given number.\n6. stringToNumber - Given a string version of a number such as \"42\", return the value as an actual Number, such as 42");
+	console.log("List of functions available:\n1. fuzzyMatch - Fuzzy-match a number: is the number above or below a number within a certain percent?\n2. isEmail - Checks whether or not a given string follows proper email address format.\n3. isPhoneNumber - Does a string follow a 123-456-7890 pattern like a phone number?\n4. isURL - Is the string a URL? (Does it start with http: or https:?)\n5. smallestValue - Find the smallest value in an array that is greater than a given number.\n6. stringToNumber - Given a string version of a number such as \"42\", return the value as an actual Number, such as 42");
 	select = prompt("Select a function from the list, using the function's designated number");
 	selectNum = parseInt(select);
 	if(selectNum === 1)
@@ -177,7 +142,7 @@ while(goOn === true)
 
 	else if(selectNum === 2)
 	{
-		timeDifference();
+		isEmail();
 	}
 
 	else if(selectNum === 3)
